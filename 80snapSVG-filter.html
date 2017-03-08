@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>78snapSVG-Snap</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="400" height="400"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+
+	/*
+	Snap.filter.blur(x, [y])
+	返回模糊滤镜的SVG标记字符串。
+
+	参数
+
+	x 数值。表示水平模糊的大小。
+	y 数值。表示垂直模糊的大小。
+	如果y缺省，则y与x值相等。如果x缺省，使用默认值2.
+
+	返回值: 字符串。表示滤镜。
+	 */
+	var svg = Snap("#svg");
+	var f1 = svg.paper.filter(Snap.filter.blur()/* 使用默认的2像素模糊 */);
+
+	c = svg.paper.circle(50, 50, 40).attr({
+	    filter: f1
+	});
+
+
+
+	/*
+	Snap.filter.brightness(amount)
+	返回亮度滤镜的SVG标记字符串。
+
+	参数: amount 数值。范围0~1, 表示滤镜数量。这里可以理解为亮度。0表示全黑，1表示没有变化，真实亮度。
+
+	返回值
+	字符串。表示滤镜。
+	 */
+	 // 显示图片
+	var brightness = svg.paper.image("image/image.jpg", 100, 10, 100, 100);
+	// 亮度滤镜, 50%亮度
+	var f2 = svg.paper.filter(Snap.filter.brightness(0.5));
+	// 应用在图片上
+	brightness.attr({
+	    filter: f2	
+	});
+
+
+	/*
+	Snap.filter.contrast(amount)
+	返回反差滤镜的SVG标记字符串。
+
+	参数   amount 数值。范围0~1, 表示滤镜数量。可以理解为明暗对比反差。0表示无反差，也就是全灰暗，1表示真实反差，图片等原本色彩。
+
+	返回值: 字符串。表示滤镜。
+	 */
+
+	 var contrast = svg.paper.image("image/image.jpg", 220, 10, 100, 100);
+	// 反差滤镜, 50%
+	var f3 = svg.paper.filter(Snap.filter.contrast(0.5));
+	// 应用在图片上
+	contrast.attr({
+	    filter: f3	
+	});
+
+	/*
+	Snap.filter.grayscale(amount)
+	返回灰度滤镜的SVG标记字符串。
+
+	参数
+
+	amount 数值。范围0~1, 表示滤镜数量。可以理解为黑白滤镜。0表示完全黑白，1表示真实色彩。
+	返回值
+
+	字符串。表示滤镜。
+	 */
+	var grayscale = svg.paper.image("image/image.jpg", 10, 120, 100, 100);
+	// 灰度滤镜, 50%
+	var f4 = svg.paper.filter(Snap.filter.grayscale(0.5));
+	// 应用在图片上
+	grayscale.attr({
+	    filter: f4	
+	});
+
+
+	/*
+	Snap.filter.hueRotate(angle)
+	返回色调旋转滤镜的SVG标记字符串。
+
+	参数
+
+	angle 数值。旋转的角度。0~360一个轮回。
+	返回值
+
+	字符串。表示滤镜。
+	 */
+	
+
+	 // 显示图片
+	var hueRotate = svg.paper.image("image/image.jpg", 120, 120, 100, 100);
+	// 反差滤镜, 50%
+	var f5 = svg.paper.filter(Snap.filter.hueRotate(45));
+	// 应用在图片上
+	hueRotate.attr({
+	    filter: f5	
+	});
+
+
+
+
+	/*
+	Snap.filter.invert(amount)
+	返回反相滤镜的SVG标记字符串。
+
+	参数
+
+	amount 数值。范围0~1, 表示滤镜数量。所有颜色替换成相反的颜色。0表示没有任何反相，1表示完全反相, 0.5则50%灰度色。
+	返回值
+
+	字符串。表示滤镜。
+	 */
+	 // 显示图片
+	var invert = svg.paper.image("image/image.jpg", 240, 120, 100, 100);
+	// 反相滤镜, 100%
+	var f6 = svg.paper.filter(Snap.filter.invert(1));
+	// 应用在图片上
+	invert.attr({
+	    filter: f6	
+	});
+
+
+
+
+	/*
+	Snap.filter.saturate(amount)
+	返回饱和度滤镜的SVG标记字符串。
+
+	参数: amount 数值。范围0~1, 表示滤镜数量。0表示完全饱和，也就是真实色彩，1表示不饱和，近似黑白颜色效果。
+	返回值
+
+	字符串: 表示滤镜。
+	 */
+	 // 显示图片
+	var saturate = svg.paper.image("image/image.jpg", 10, 240, 100, 100);
+	// 饱和度滤镜, 50%
+	var f7 = svg.paper.filter(Snap.filter.saturate(0.5));
+	// 应用在图片上
+	saturate.attr({
+	    filter: f7	
+	});
+
+
+
+
+	/*
+	Snap.filter.sepia(amount)
+	返回棕褐色滤镜的SVG标记字符串。
+
+	参数
+
+	amount 数值。范围0~1, 表示滤镜数量。可以理解为怀旧效果滤镜。0为真实色彩，1表示完全棕褐色效果。
+	返回值
+
+	字符串。表示滤镜。
+	 */
+
+	 // 显示图片
+	var sepia = svg.paper.image("image/image.jpg", 120, 240, 100, 100);
+	// 棕褐色滤镜, 50%
+	var f8 = svg.paper.filter(Snap.filter.sepia(0.5));
+	// 应用在图片上
+	sepia.attr({
+	    filter: f8	
+	});
+
+
+	/*
+	Snap.filter.shadow(dx, dy, [blur], [color])
+	返回阴影滤镜的SVG标记字符串。
+
+	参数
+
+	dx 数值。水平偏移投影大小，单位像素。
+	dy 数值。垂直偏移投影大小，单位像素。
+	blur 数值。模糊数量。默认大小为4像素。
+	color 字符串。投影的颜色值。默认颜色为黑色。
+	如果dy缺省，则使用dx大小；如dx缺省，则dx使用默认数值2.
+
+	返回值
+
+	字符串。表示滤镜。
+	 */
+
+	var f9 = svg.paper.filter(Snap.filter.shadow(0, 2, 3)),
+	c = svg.paper.circle(280, 300, 40).attr({
+	    fill: "red",
+	    filter: f9
+	});
+
+
+
+
+
+</script>
+</html>
