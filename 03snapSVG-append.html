@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>03snapSVG-append.html</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg1" width="100" height="100"></svg>
+	<svg id="svg2" width="100" height="100"></svg>
+           
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="蓝圈圈跑到红圈圈家里蹭饭">
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+
+	var svg1 = Snap('#svg1'), svg2 = Snap('#svg2');
+	var c1 = svg1.paper.circle(50, 50, 40).attr({
+		fill: '#f00' // 红色
+	});
+	var c2 = svg2.paper.circle(50, 50, 30).attr({
+			fill: '#00f' //蓝色
+		});
+
+	document.querySelector('#button').addEventListener('click', function(){
+		// svg1.append(c2);//svg1.prepend(c2);
+		
+		svg1.add(c2);
+
+		c1.remove();//移除
+		
+		this.value = "蹭饭成功";
+	})
+
+
+
+
+
+</script>
+</html>

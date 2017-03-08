@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>19snapSVG-pattern</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="250" height="250"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var p = svg.paper.path("M10-5-10,15M15,0,0,15M0-5-20,15").attr({
+	    fill: "none",
+	    stroke: "#beceeb",
+	    strokeWidth: 5
+	}).pattern(0, 0, 10, 10);
+	c = svg.paper.circle(120, 120, 100);
+	c.attr({
+	    // 斜纹图案填充
+	    fill: p
+	});
+
+	/*
+		x 字符串或数值。
+		y 字符串或数值。
+		width 字符串或数值。
+		height 字符串或数值。
+		<pattern>元素可以通过fill属性使用。
+	 */ 
+
+
+</script>
+</html>

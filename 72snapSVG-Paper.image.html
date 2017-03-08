@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>72snapSVG-Paper.image</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="300" height="210"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	/*
+		Paper.image(src, x, y, width, height)
+		参数
+
+		src: 图片的URI。
+		x: x偏移位置。
+		y: y偏移位置。
+		width: 图片的宽度。
+		height: 图片的高度。
+		返回值
+
+		对象。image元素。
+
+		使用
+
+	 */
+
+	var svg = Snap("#svg");
+	var c = svg.paper.image("image/image.jpg", 10, 10, 80, 80);
+
+
+
+</script>
+</html>

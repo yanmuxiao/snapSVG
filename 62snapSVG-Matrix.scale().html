@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>62snapSVG-Matrix.scale</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="100" height="100"></svg>
+
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="点击缩放0.8~1.2倍">
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var c = svg.paper.rect(20, 20, 60, 60, 10).attr({
+	    fill: "#f00"    // 红色
+	});
+	
+
+	document.getElementById("button").onclick = function() {
+
+	    var m = new Snap.Matrix();
+	    var scale = Math.round((0.8 + 0.4 * Math.random()) * 100) / 100;
+	    m.scale(scale, scale);
+	    c.transform(m);// 缩放
+
+	};
+
+
+	/*
+		
+		Matrix.scale(x, [y], [cx], [cy])
+
+		参数:
+
+			x 数值。水平方向缩放的比例。1表示不缩放。
+			y 数值。垂直方向缩放的比例。1表示不缩放。
+			cx 数值。表示缩放中心点的x位置。
+			cy 数值。表示缩放中心点的y位置。
+			cx, cy是默认是元素的中心点。
+
+
+	 */		
+
+
+
+</script>
+</html>

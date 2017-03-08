@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" id="scaleMeta" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>23snapSVG-touchstart</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="300" height="300"></svg>
+
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="点击改变圈圈的顺序">
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	// 手机端事件
+	var svg = Snap("#svg");
+	var c = svg.paper.circle(150, 150, 100).attr({
+	    fill: "#f00"        // 红色
+	}).touchstart(function() {
+	    this.attr({
+	        fill: "#00f"    // 蓝色
+	    });	
+	}).touchmove(function() {
+	    this.attr({
+	        fill: "#0f0"    // 绿色
+	    });	
+	}).touchend(function() {
+	    this.attr({
+	        fill: "#0ff"
+	    });	
+	}).touchcancel(function() {//??
+	    this.attr({
+	        fill: "#000"
+	    });	
+	});
+
+	/*
+	.untouchstart()
+	.untouchmove()
+	.untouchend()
+	.untouchcancel()
+	 */
+
+
+</script>
+</html>

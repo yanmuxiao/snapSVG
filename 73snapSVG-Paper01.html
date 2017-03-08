@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>73snapSVG-Paper02</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="400" height="400"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	// Paper.line(x1, y1, x2, y2)
+
+	var svg = Snap("#svg");
+	var line1 = svg.paper.line(50, 50, 100, 100).attr({
+	    stroke: "#000",
+	    strokeWidth: 5	
+	});
+
+
+
+	/*
+	参数
+
+		pathString SVG格式路径字符串。
+		路径字符串是包含一个字母的命令，以逗号分隔，参数为数值形式。例如：
+
+		"M10,20L30,40"
+		上面这个例子包含两个命令：
+
+		M及其参数(10, 20);
+		L及其参数(30, 40)
+		大写的命令字母的坐标是绝对形式；而小写的命名是相对形式，相对于最近一次声明的坐标。
+
+		下面这个简短的列表为可用命令，具体内容可以参见W3 SVG路径字符串格式或MDN上关于路径字符串的文章。
+
+
+	命令		名称									参数
+	M		moveto  移动到								(x y)+
+	Z		closepath  关闭路径							(none)
+	L		lineto  画线到								(x y)+
+	H		horizontal lineto  水平线到					x+
+	V		vertical lineto  垂直线到					y+
+	C		curveto  三次贝塞尔曲线到					(x1 y1 x2 y2 x y)+
+	S		smooth curveto  光滑三次贝塞尔曲线到		(x2 y2 x y)+
+	Q		quadratic Bézier curveto  二次贝塞尔曲线到	(x1 y1 x y)+
+	T		smooth quadratic Bézier curveto  光滑二次贝塞尔曲线到				(x y)+
+	A		elliptical arc  椭圆弧				(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
+	R		Catmull-Rom curveto*  Catmull-Rom曲线				x1 y1 (x y)+
+
+
+	Catmull-Rom曲线不是标准的SVG命令，这里添加是为了让生活更美好。
+
+
+	注意：这里有个特别的案例。当一个路径仅包含3个命令：M10, 10R...z. 这种情况下，路径的连接会回到起始点。
+
+
+	 */
+	
+
+
+	// 画一条对角线:
+	// 移动到 10,10, 画线至 90,90
+	var svg = Snap("#svg");
+	var line2 = svg.paper.path("M10 20 L90 120").attr({
+	    stroke: "#f00",
+	    strokeWidth: 5	
+	});
+	
+
+
+
+	// 不封闭的折线
+	var polyline1 = svg.paper.polyline([120, 120, 200, 200]).attr({
+	    stroke: "#0f0",
+	    strokeWidth: 5	
+	});
+	var polyline2 = svg.paper.polyline(160, 180, 250, 280, 250, 360).attr({
+	    stroke: "#00f",
+	    strokeWidth: 5	
+	});
+
+
+	// 封闭的折线
+	var polygon3 = svg.paper.polygon([160, 120, 240, 200]).attr({
+	    stroke: "#0f0",
+	    strokeWidth: 5	
+	});
+	var polygon4 = svg.paper.polygon([160, 120, 240, 200, 240, 100]).attr({
+	    stroke: "#0f0",
+	    strokeWidth: 5	
+	});
+
+
+	// 圆角矩形，左上角坐标(10, 20), 宽120高90, 圆角大小10
+	var rect = svg.paper.rect(50, 300, 120, 90, 10);
+
+
+
+	// text
+	var text1 = svg.paper.text(50, 50, "Snap");
+	var text2 = svg.paper.text(150, 50, ["S","n","a","p"]).attr({
+		fill: '#f00'
+	});
+
+
+
+	/*
+		Paper.toString()
+		返回值
+
+		返回元素的SVG代码，等同于HTML中的outerHTML方法。
+
+		返回Paper的SVG代码。
+
+		以上返回均是字符串。
+	 */
+
+	 console.log(svg.paper.toString());
+
+
+</script>
+</html>

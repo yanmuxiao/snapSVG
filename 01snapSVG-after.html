@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>01snapSVG-after</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg01" width="200" height="100">
+		
+	</svg>
+
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="点击改变圈圈的顺序">
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+	
+	var svg = Snap("#svg01");
+	var c1 = svg.paper.circle(50, 50, 40).attr({
+	    fill: "#f00",	// 红色
+	    'fill-opacity': '.5',
+	    stroke: '#666',
+	    strokeWidth: 2
+	});
+	var c2 = svg.paper.circle(100, 50, 40).attr({
+	    fill: "#00f"	// 蓝色
+	});
+
+
+	// 事件
+	var bool = true;
+	document.querySelector("#button").addEventListener("click", function() {
+		if(bool){
+			// c2.after(c1);	
+			c1.insertAfter(c2);	
+		}else{
+			// c2.before(c1);	
+			c1.insertBefore(c2);	
+		}
+	    bool = !bool;
+	});
+
+
+
+
+</script>
+</html>

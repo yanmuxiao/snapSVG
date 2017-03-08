@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" id="scaleMeta" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>24snapSVG-transform</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="100" height="100"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var c = svg.paper.circle(50, 50, 40);
+	console.dir(c.transform());
+	/*
+	{
+		string字符串。转换字符串。
+		globalMatrix矩阵。应用在该元素或父级元素上所有转换矩阵。
+		localMatrix矩阵。仅用在该元素上的转换矩阵。
+		diffMatrix矩阵。全局矩阵和本地矩阵之间的差异矩阵。
+		global字符串。全局转换字符串。
+		local字符串。当前转换字符串。
+		toString字符串。返回string属性。
+	}
+	 */
+
+
+</script>
+</html>

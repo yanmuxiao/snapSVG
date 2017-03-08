@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>76snapSVG-Set</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="400" height="100"></svg>
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="change color">
+	<input id="button2" class="button button-3d button-action button-pill button-small" type="button" value="splice">
+	<input id="button3" class="button button-3d button-action button-pill button-small" type="button" value="forEach">
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var c1 = svg.paper.circle(50,50,40);
+	var c2 = svg.paper.circle(150,50,40);
+
+
+	// 获得set集合
+	var set = svg.selectAll("circle");
+	console.log(set instanceof Array);//false ==>not Array
+	
+
+
+	document.querySelector('#button').addEventListener('click', function(){
+		// 移除所有元素
+		set.clear();
+		// 添加第2个圈圈元素
+		var pushed = set.push(c2);
+		// set变成红苹果
+		set.attr({
+		    fill: "#f00"	 
+		});
+
+	})
+
+
+	document.querySelector('#button2').addEventListener('click', function(){
+		// 此时set也就是c1和c2的集合
+		// 移除set中序号0开始数目为1的元素，并设置为蓝色填充
+		// 移除set中特定范围内的元素。非常类似JS数组的splice方法。
+		set.splice(0, 1).attr({	//splice返回删除的数字，并且改变原数组
+		    fill: "#00f"	 
+		});
+		// 剩下的红色填充
+		set.attr({				//剩余的数组元素
+		    fill: "#0f0"	 
+		});
+	})
+	
+	// set.pop() 		==> 移除最后一个并返回移除的对象
+	// set.exclude(c1); ==> 点名移除对象并返回移除的对象
+
+
+
+	// forEach循环
+	document.querySelector('#button3').addEventListener('click', function(){
+		// 遍历填色
+		set.forEach(function(element, index) {
+		    element.attr({
+		        fill: ["#f00", "#00f"][index] 
+		    });				 
+		});
+	})
+
+
+</script>
+</html>

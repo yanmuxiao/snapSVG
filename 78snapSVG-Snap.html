@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>78snapSVG-Snap</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+    <svg id="svg" width="400" height="100"></svg>
+    
+
+    <br><br>        	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="水平位移">
+
+	<br><br>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+	/*
+		Snap(…)
+		绘制一个面或者包裹一个已经存在的SVG元素。
+
+		参数
+
+		width: 数值或字符串。面的宽度。
+		height: 数值或字符串。面的高度。
+
+		或者: DOM SVG元素。被包裹的用来使用Snap构造的元素。
+
+		或者: query 字符串。CSS查询选择器。
+
+		返回值: 对象。元素。
+	*/
+	var svg = Snap(100, 100);//也就是创建SVG
+	svg.paper.circle(50,50,40);
+
+
+
+
+
+	/*
+	Snap.animate(from, to, setter, duration, [easing], [callback])
+	通过一个很有爱的函数把动画从一个数字运行到另外一个。
+
+	参数
+
+	from 数值或数组。动画起始数值或数值数组。
+	to 数值或数组。动画结束数值或数值数组。
+	setter 函数。接受一个数值参数的贴心函数。
+	duration 数值。动画持续时间，单位是毫秒。
+	easing 函数。来自mina或自定义的缓动函数。
+	callback 函数。动画结束时候执行的回调函数。
+	 */
+	var rect = Snap("#svg").paper.rect(10, 20, 60, 40);
+	document.getElementById("button").onclick = function() {        
+	    // Snap.animate(0, 200, function (val) {
+	    //     rect.attr({
+	    //         x: val
+	    //     });
+	    // }, 1000);
+	    // 以上代码，类似于下面的效果
+	    rect.animate({x: 200}, 1000);
+	    // 显然，上面的更强大，更灵活；下面的则是简单易懂
+	};
+
+
+	/*
+		Snap.deg(rad)
+		转换弧度为角度。
+
+		参数
+
+		rad 数值。弧度。
+		返回值
+
+		数值。角度值。
+
+		使用
+
+		Snap.deg(Math.PI); // 结果是：180
+	 */
+
+
+
+
+</script>
+</html>

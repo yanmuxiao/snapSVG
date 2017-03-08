@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>25snapSVG-use</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg"></svg>
+
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var c = svg.paper.el("circle", {
+	    cx: 50,
+	    cy: 50,
+	    r: 40	
+	});
+
+	c.use();//创建一个<use>元素连接到当前元素。????
+
+
+</script>
+</html>

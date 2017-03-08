@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>11snapSVG-getPointAtLength</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="100" height="100"></svg>
+
+	
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	var c = svg.paper.path("M10 10L90 90").attr({
+	    stroke: "#000",
+	    strokeWidth: 5	
+	});
+	//返回给定路径上给定长度的点坐标（仅适用于path元素）。
+	console.dir(c.getPointAtLength(20));    // 结果见最下面的截图
+
+
+</script>
+</html>

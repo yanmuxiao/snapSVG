@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>15snapSVG-inAnim</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="200" height="100"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap('#svg');
+	var c = svg.paper.circle(50, 50, 40).click(function(){
+
+		this.animate({
+			fill: "#" + (Math.random() + "").slice(-3)    // 随机
+		}, 1000);
+
+		setTimeout(function() {
+	        console.dir(c.inAnim());
+	    }, 500);
+
+
+	})
+
+
+</script>
+</html>

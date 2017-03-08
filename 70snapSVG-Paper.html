@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>70snapSVG-Paper</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="600" height="600"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var svg = Snap("#svg");
+	svg.paper.circle(50, 50, 20); //==>画圆
+
+
+	svg.paper.el("circle", {
+	    cx: 100,
+	    cy: 50,
+	    r: 20	
+	}); // 等同于svg.circle(50, 50, 40);
+
+
+
+
+	svg.paper.ellipse(50, 150, 40, 20);//画个橄榄球砸死你。
+	/*
+		cx 表示中心点的x坐标。
+		cy 表示中心点的y坐标。
+		rx 表示椭圆水平方向的半径大小。
+		ry 表示椭圆垂直方向的半径大小。
+
+	 */
+	
+
+	var f = svg.paper.filter('<feGaussianBlur stdDeviation="2"/>');//2像素圈圈高斯模糊。
+	svg.paper.el('circle', {
+		cx: 150,
+		cy: 50,
+		r: 20
+	}).attr({
+		filter: f
+	})
+
+	/*
+		Paper.filter(filstr)
+		创建一个<filter>元素。也就是滤镜元素啦~~
+
+		参数
+
+		filstr 滤镜相关的SVG字符串片段。
+		返回值
+
+		对象。包含id, 元素等一些信息。
+
+		注意：要在页面嵌入滤镜的话推荐嵌在空SVG元素中。
+	 */
+
+
+
+	var svg = Snap("#svg");
+	var c1 = svg.paper.circle(50, 240, 40), c2 = svg.paper.rect(150, 200, 120, 80);
+	var g = svg.paper.g(c2, c1); // 注意这里元素的顺序是不一样的
+
+
+	// var g = svg.paper.g();
+	// g.add(c2, c1);
+
+
+
+</script>
+</html>

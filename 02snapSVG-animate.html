@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>02snapSVG-animate</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg02" width="200" height="100">
+		
+	</svg>
+
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="点击改变圈圈的顺序">
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+	/*
+	
+	 Element.animate(attrs, duration, [easing], [callback])	
+		attrs 对象。描述属性的键值对。
+		duration 数值。动画持续的时间，单位是毫秒。
+		easing 函数。自定义的或者mina提供的缓动函数。
+		callback 函数。动画结束时候的回调。
+
+	*/
+
+	var svg = Snap("#svg02");
+	var c = svg.paper.circle(50, 50, 40).attr({
+	    fill: "#f00"	// 红色
+	});
+
+	// 事件
+	document.querySelector("#button").addEventListener("click", function() {
+	    var button = this;
+	    c.animate({
+	        fill: "#00f"	// 蓝色
+	    }, 1500, mina.bounce, function() {
+	        button.value = "变成蓝色妖姬了~";
+	    });	
+	});
+
+
+</script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>60snapSVG-Matrix</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="120" height="120"></svg>
+
+	
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="transform">
+
+
+	<input id="translate" class="button button-3d button-action button-pill button-small" type="button" value="translate">
+
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+
+
+	var m = new Snap.Matrix(1,2,3,4,5,6);
+	console.log(m);//f {a: 1, b: 2, c: 3, d: 4, e: 5, f: 6}
+
+
+	// Matrix.split() ==> 分割矩阵
+	console.log(m.split());
+	/*
+
+		dx:5
+		dy:6
+		isSimple:false
+		isSuperSimple:false
+		noRotation:false
+		rotate:116.56505117707798
+		scalex:-2.23606797749979
+		scaley:0.8944271909999159
+		shear:5.5
+
+		dx数值。x方向偏移大小。
+		dy数值。y方向偏移大小。
+		scalex数值。x方向缩放大小。
+		scaley数值。y方向缩放大小。
+		shear数值。剪切。
+		rotate数值。旋转的角度。
+		isSimple布尔值。是否可以通过简单转换来表示。
+
+
+	 */
+
+
+
+	//返回给定点经矩阵转换后的x坐标。
+	window.console && console.log(m.x(50,50));//1*50 + 3*50 + 5 = 205
+	//返回给定点经矩阵转换后的y坐标。
+	window.console && console.log(m.y(50,50));//2*50 + 4*50 + 6 = 306
+
+
+
+
+	// clone ==> 负责一份m
+	mClone = m.clone();//{a: 1, b: 2, c: 3, d: 4, e: 5, f: 6}
+	console.log(mClone);
+
+
+
+
+
+	// invert ==> 反矩阵
+	mInvert = m.invert();
+	console.log(mInvert);//f {a: -2, b: 1, c: 1.5, d: -0.5, e: 1, f: -2}
+
+
+
+
+
+	//返回给定点经矩阵转换后的x坐标。
+	window.console && console.log(mClone.x(50,50));//1*50 + 3*50 + 5 = 205
+	//返回给定点经矩阵转换后的y坐标。
+	window.console && console.log(mClone.y(50,50));//2*50 + 4*50 + 6 = 306
+
+
+
+
+	var svg = Snap("#svg");
+	// 画个圈圈
+	var c = svg.paper.circle(50, 50, 40);
+
+	// 当前矩阵
+	var m1 = new Snap.Matrix(1,0,0,1,20,20);
+	// 圈圈应用矩阵变换 - 位移(20, 20)
+	// m1.toTransformString()返回给定矩阵的使用transform表示的字符串。
+	c.transform(m1.toTransformString());
+	// 事件
+	if (document.addEventListener) {
+	    document.querySelector("#button").addEventListener("click", function() {
+	        // 矩阵组合
+	        m1.add(1,0,0,1,-20,-20);
+	        // 圈圈再次应用矩阵变换 - 位移(-20, -20)
+	        c.transform(m1.toTransformString());
+	    });
+	}
+
+	// transtalte
+	document.querySelector('#translate').addEventListener('click', function(){
+		m1.translate(30, 30);
+		console.log(m1);
+		c.transform(m1.toTransformString());
+	})
+
+
+
+
+
+
+</script>
+</html>

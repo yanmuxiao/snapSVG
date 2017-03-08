@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>71snapSVG-Paper.gradient</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+    
+	<svg id="svg" width="400" height="100"></svg>
+
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	/*
+	Paper.gradient(gradient) 创建一个渐变元素。
+	
+
+	参数: gradient 字符串。渐变描述符。
+
+	渐变描述符
+
+	渐变描述符遵循特定的表达式格式：<type>(coords)<colors>.
+
+	其中<type>可以是线性的(linear)或者是径向的(radial)。大写字母L或R表示从SVG表明偏移的绝对坐标。小写字母l或r表示应用渐变的这个元素计算的相对坐标（可以理解为百分比位置）。线性渐变的向量指定通过x1,y1,x2,y2, 径向渐变通过cx,cy,r以及（可选的）远离圆心的焦点fx,fy. <colors>值的指定通过一系列短横符链接的CSS颜色值。每个颜色可以跟随一个使用冒号分隔的自定义偏移值。
+
+	返回值
+
+		对象。gradient元素。
+
+	 */
+
+	var svg = Snap("#svg");
+
+	// 1. 线性渐变，相对，左上角到右下角，从黑色到红色再白色。
+	var g1 = svg.paper.gradient("l(0, 0, 1, 1)#000-#f00-#fff");
+	svg.paper.circle(50, 50, 40).attr({
+	    fill: g1
+	});
+
+
+	// 2. 线性渐变，绝对，从(0,0)到100, 100, 从黑色到25%位置红色再到白色。
+	var g2 = svg.paper.gradient("L(0, 0, 100, 100)#000-#f00:25-#fff");
+	svg.paper.circle(150, 50, 40).attr({
+	    fill: g2
+	});
+
+
+
+	// 3. 径向渐变，相对，从元素中心开始，半径为宽度的一本, 从黑色到白色。
+	var g3 = svg.paper.gradient("r(0.5, 0.5, 0.5)#000-#fff");
+	svg.paper.circle(250, 50, 40).attr({
+	    fill: g3
+	});
+
+
+
+
+</script>
+</html>
