@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>81snapSVG-format(fragment)</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="400" height="400"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var str = '<div id="{id}">{content}</div>';
+	var rep = Snap.format(str, {
+	    id: "id_" + mina.time(),
+	    content: '我正在床上听歌'
+	});
+	window.console && console.log(rep);
+	// 结果是：
+	// <div id="id_1389797097377">我正在床上听歌</div>
+
+
+
+	// 下面这个画一个矩形形状，代码等同于"M10,20h40v50h-40z"
+	var svg = Snap('#svg');
+	svg.paper.path(Snap.format("M{x},{y}h{dim.width}v{dim.height}h{dim['negative width']}z", {
+		x: 10,
+		y: 20,
+		dim: {
+		    width: 40,
+		    height: 50,
+		    "negative width": -40
+		}
+	}));
+
+
+
+	var c = Snap.fragment('<circle cx="150" cy="50" r="40"></circle><circle cx="250" cy="50" r="40"></circle>');
+	svg.append(c);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

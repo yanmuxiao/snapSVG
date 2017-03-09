@@ -85,6 +85,62 @@
 		使用
 
 		Snap.deg(Math.PI); // 结果是：180
+
+
+
+
+
+		//Snap.ajax(url, callback)
+		Snap.ajax(…)
+		简单的Ajax方法。
+
+		参数
+
+		url 字符串。URL
+		postData 对象或字符串。要post的数据。
+		callback 函数。回调函数。
+		scope 对象。回调函数的作用域。
+		或者
+
+		url 字符串。URL
+		callback 函数。回调函数。
+		scope 对象。回调函数的作用域。
+		返回值 XMLHttpRequest。返回XMLHttpRequest对象。
+
+
+
+		var svg = Snap("#svg");
+		var c = svg.paper.circle(50,50,40);
+
+		document.getElementById("button").onclick = function() {
+		    Snap.ajax("../_ajax/ajax.php", function(response) {
+		        c.attr({
+		            fill: response.responseText   
+		        });										
+		    });
+		};
+
+
+		
+
+		Snap.load(url, callback, [scope])
+		加载外部的SVG文件作为文档片段（参见Snap.ajax更高级的Ajax技巧）。
+
+		参数
+
+		url 字符串。URL
+		callback 函数。回调
+		scope 对象。回调函数的作用域。
+		返回值  元素。返回父元素。
+
+
+		Snap.load("../_ajax/ajax.svg", function(svg) {
+		    this.appendChild(svg.node);
+		}, document.getElementById("append"));
+
+
+
+
 	 */
 
 

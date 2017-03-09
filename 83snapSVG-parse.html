@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>83snapSVG-parse</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="150" height="100"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	/*
+	Snap.parse(svg)
+	解析SVG片段字符串为SVG片段。
+	 */
+	var fragment = Snap.parse('<circle cx="50" cy="50" r="40"></circle>');
+	Snap("#svg").add(fragment);
+
+
+
+	/*
+	Snap.parsePathString(pathString)
+	实用方法，解析路径字符串为路径区段数组。
+
+	参数
+
+	pathString 字符串或数组。路径字符串或区段数组(后面一种情况直接返回)。
+	返回值
+
+	数组。区段数组。
+	 */
+	
+	var arr1 = Snap.parsePathString("M10 10 L90 90");
+	var arr2 = Snap.parsePathString([["M",10,10], ["L",90,90]]);
+	console.log(arr1);
+	console.log(arr2);
+
+
+
+	/*
+	Snap.parseTransformString(TString)
+	实用方法，解析给定的变换字符串为变换数组。
+
+	参数
+
+	TString 字符串或数组。变换字符串或变换数组(后面一种情况直接返回)。
+	返回值
+
+	数组。变换数组。
+	 */
+
+	var arr = Snap.parseTransformString("t20,20s2,1,0,0");
+	console.log(arr);
+
+
+
+</script>
+</html>

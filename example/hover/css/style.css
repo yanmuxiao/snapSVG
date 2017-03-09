@@ -1,0 +1,31 @@
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+/* the important bits */
+li {
+  -webkit-perspective: 400px;
+          perspective: 400px;
+}
+
+
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+.info-wrap li {
+  width: 160px;
+  height: 160px;
+  background-color: #ECF0F1;
+  position: relative;
+  overflow: hidden;
+}
+
+

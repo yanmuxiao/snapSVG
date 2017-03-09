@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>90snapSVG-mina</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="200" height="100"></svg>
+
+	<input id="button" class="button button-3d button-action button-pill button-small" type="button" value="点击运动">
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	var c = Snap("#svg").paper.circle(50,50,40).attr({ fill: "red" });
+
+	document.getElementById("button").onclick = function() {
+	    var now = mina.time();
+	    var ani = mina(50, 150, now, now + 1000, mina.time, function(val) {
+	        c.attr({
+	            cx: val   
+	        });
+	    }, mina.easeout);
+
+	    console.dir(ani);
+	};
+
+
+	/*
+	mina.time()
+	返回当前时间，等同于：
+
+	function () {
+	    return (new Date).getTime();
+	}
+
+
+	
+	mina(a, A, b, B, get, set, [easing])
+	动画通常用到的一些数字。
+
+	参数
+
+	a 数值。起始奴隶值。
+	A 数值。结束奴隶值。
+	b 数值。起始主人值（通常指开始时间）。
+	B 数值。结束主人值（通常指结束时间）。
+	get 函数。主人值的getter(见mina.time).
+	set 函数。奴隶值的setter.
+	easing 函数。缓动函数，默认为mina.linear
+	返回值
+
+	对象。动画描述符。
+
+	{
+		id字符串。动画的id.
+		start数值。开始的slave值。
+		end数值。结束的slave值。
+		b数值。开始的master值。
+		s数值。动画的状态(0..1).
+		dur数值。动画持续的时间。
+		spd数值。动画的速度。
+		get函数。master值的getter(见mina.time).
+		set函数。slave值的setter.
+		easing函数。缓动函数，默认为mina.linear
+		status函数。getter/setter的状态。
+		speed函数。getter/setter的速度。
+		duration函数。getter/setter的持续时间。
+		stop函数。动画的stopper.
+	}
+	 */
+
+
+</script>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>82snapSVG-getElementByPoint</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="150" height="100"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+
+	/*
+		Snap.getElementByPoint(x, y)
+		返回给定点最上面一个元素。
+
+		参数
+
+		x 数值。点的x位置。
+		y 数值。点的y位置。
+		返回值
+
+		对象。Snap元素对象。
+	 */
+
+	var svg = Snap("#svg");
+	var c1 = svg.paper.circle(50,50,40).attr({
+	    fill: "red"									
+	}), c2 = svg.paper.circle(100,50,40).attr({
+	    fill: "green"									
+	});
+
+	// var rect = svg.node.getBoundingClientRect(), detail = document.getElementById("detail");
+	// var y_svg = rect.top + detail.scrollTop + 50,
+	//     x_svg = rect.left + detail.scrollLeft + 75;
+
+	// var c_in = Snap.getElementByPoint(x_svg, y_svg);
+
+	// // 在相对SVG (75,50)这一点的最上面元素蓝色边框
+	// c_in.attr({
+	//     stroke: "blue",
+	//     strokeWidth: 5
+	// });
+
+
+
+	// 解析颜色字符串为RGB对象。
+	console.dir(Snap.getRGB("red"));
+	console.dir(Snap.getRGB("#f00"));
+
+
+
+	// 转换HSB颜色为16进制颜色表示。
+	console.log(Snap.hsb(.5, .4, .5));    // #4d8080
+
+
+	/*
+ 
+	Snap.hsb2rgb(h, s, v)
+	HSB值转换成RGB对象。
+
+
+	Snap.hsl(h, s, l)
+	转换HSL颜色为16进制颜色表示。
+	
+
+	Snap.hsl2rgb(h, s, l)
+	HSL值转换成RGB对象。
+	
+
+
+	Snap.is(o, type)
+	typeof运算符另外一种更好的替代表现形式。
+	
+	console.log(Snap.is(Math.random(), "number"));    // true
+
+
+
+	 */
+
+</script>
+</html>

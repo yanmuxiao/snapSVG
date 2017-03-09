@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>85snapSVG-Snap.path</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/button.css" rel="stylesheet">
+</head>
+<body>
+
+	<svg id="svg" width="350" height="300"></svg>
+
+</body>
+<script type="text/javascript" src="js/snap.svg-min.js"></script>
+<script type="text/javascript">
+	/*
+		Snap.path.bezierBBox(…)
+		实用方法返回一个给定的三次贝塞尔曲线的边界框
+		参数
+		p1x 数值。曲线第1个点的x位置。
+		p1y 数值。曲线第1个点的y位置。
+		c1x 数值。曲线第1个锚的x位置。
+		c1y 数值。曲线第1个锚的y位置。
+		c2x 数值。曲线第2个锚的x位置。
+		c2y 数值。曲线第2个锚的y位置。
+		p2x 数值。曲线第2个点的x位置。
+		p2y 数值。曲线第2个点的y位置。
+
+		或者
+
+		bez 数组。包含6个点的贝塞尔曲线数组。
+		返回值
+		对象。边界框。
+		{
+			x:数值。盒子左上点的x坐标。
+			y:数值。盒子左上点的y坐标。
+			x2:数值。盒子右下点的x坐标。
+			y2:数值。盒子右下点的y坐标。
+			width:数值。盒子的宽度。
+			height:数值。盒子的高度。
+		}
+	 */
+	var bound1 = Snap.path.bezierBBox(20,80, 40,40, 60,40, 80,80);
+	var bound2 = Snap.path.bezierBBox([20,80, 40,40, 60,40, 80,80]);
+	console.dir(bound1);
+	console.dir(bound2);
+
+
+
+
+	/*
+	Snap.path.findDotsAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t)
+	实用方法返回给定曲线上特定位置的点坐标。
+
+	参数
+
+	p1x 数值。曲线第1个点的x位置。
+	p1y 数值。曲线第1个点的y位置。
+	c1x 数值。曲线第1个锚的x位置。
+	c1y 数值。曲线第1个锚的y位置。
+	c2x 数值。曲线第2个锚的x位置。
+	c2y 数值。曲线第2个锚的y位置。
+	p2x 数值。曲线第2个点的x位置。
+	p2y 数值。曲线第2个点的y位置。
+	pt2y 数值。曲线上的位置(0~1)。
+	返回值
+
+	对象。如下格式的点信息：
+
+	{
+		x:数值。点的x坐标。
+		y:数值。点的y坐标。
+		m: {
+			x:数值。左侧锚点的x坐标。
+			y:数值。左侧锚点的y坐标。
+		},
+		n: {
+			x:数值。右侧锚点的x坐标。
+			y:数值。右侧锚点的y坐标。
+		},
+		start: {
+			x:数值。曲线开始的x坐标。
+			y:数值。曲线开始的y坐标。
+		},
+		end: {
+			x:数值。曲线结束的x坐标。
+			y:数值。曲线结束的y坐标。
+		},
+		alpha:数值。 改点在曲线上的切线角度。
+	}
+	 */
+	var dot = Snap.path.findDotsAtSegment(20,80, 40,40, 60,40, 80,80, 0.5);
+	console.dir(dot);
+
+
+	/*
+	Snap.path.getBBox(path)
+	返回给定路径边界盒子的实用方法。
+
+	参数  path 字符串。路径字符串。
+	返回值  对象。边界盒子。
+
+	{
+		x:数值。盒子左上点的x坐标。
+		y:数值。盒子左上点的y坐标。
+		x2:数值。盒子右下点的x坐标。
+		y2:数值。盒子右下点的y坐标。
+		width:数值。盒子的宽度。
+		height:数值。盒子的高度。
+	}
+	 */
+	var bound = Snap.path.getBBox("M10,10L90,90");
+	console.dir(bound);
+
+
+
+	/*
+	Snap.path.getPointAtLength(path, length)
+	返回给定路径上给定长度的点坐标。可参考Element.getPointAtLength
+
+	参数
+
+	path 字符串。SVG路径字符串。
+	length 数值。长度。单位为像素，起始于路径的开头，但不包括non-rendering的跳跃。
+	返回值
+
+	对象。表示点。
+
+	{
+		x:数值。x坐标。
+		y:数值。y坐标。
+		alpha:数值。该点的切线角度。
+	}
+	 */
+	var p = Snap.path.getPointAtLength("M10 10 L90 90", 20);
+	console.dir(p);
+
+
+
+
+	/*
+	Snap.path.getSubpath(path, from, to)
+	返回给定路径上指定起始结束长度上的子路径。另可参见Element.getSubpath.
+
+	参数
+
+	path 字符串。SVG路径字符串。
+	from 数值。表长度，以像素为单位，从路径起点到该段的开始
+	to 数值。表长度，以像素为单位，从路径起点到该段的终点
+	返回值
+
+	字符串。定义该段路径的字符串。
+	 */
+	console.log(Snap.path.getSubpath("M10 10L90 90", 20, 80));
+	// 结果是：
+	// M24.139,24.139C35.874,35.874,52.807,52.807,66.565,66.565
+
+
+
+
+	/*
+	Snap.path.getTotalLength(path)
+	以像素为单位，返回路径的长度（仅适用于path元素）。
+
+	参数
+
+	path 字符串。SVG路径字符串。
+	返回值
+
+	数值。长度值。
+
+	 */
+
+	 console.log(Snap.path.getTotalLength("M10 10L90 90"));
+	// 结果是：
+	// 113.1370849609375
+
+
+
+	/*
+	Snap.path.intersection(path1, path2)
+	实用方法。查找两条路径的相交。
+
+	参数
+	path1 字符串。路径字符串。
+	path2 字符串。路径字符串。
+	返回值
+
+	数组。相交点。
+
+	[
+		{
+			x:数值。点的x坐标。
+			y:数值。点的y坐标。
+			t1:数值。path1路径的片断t值(也就是位置0~1)。
+			t2:数值。path2路径的片断t值。
+			segment1:数值。path1路径片断的顺序号。
+			segment2:数值。path2路径片断的顺序号。
+			bez1:数组。path1路径片断的贝塞尔曲线的8坐标表示。
+			bez2:数组。path2路径片断的贝塞尔曲线的8坐标表示。
+		}
+	]
+	 */
+
+
+	var path1 = "M10,10L90,90";
+	var path2 = "M10,50,L90,50";
+	var inters = Snap.path.intersection(path1, path2);
+	console.log(inters[0]);
+
+
+
+
+
+
+	/*
+	Snap.path.isBBoxIntersect(bbox1, bbox2)
+	两个盒子是否相交。如果相交则返回true.
+
+	参数
+
+	bbox1 字符串。第1个盒子。
+	bbox2 字符串。第2个盒子。
+	返回值
+
+	布尔值。相交则返回true.
+	 */
+	var svg = Snap("#svg");
+	var c1 = svg.paper.circle(50,50,40).attr({
+	    fill: "red"									
+	}), c2 = svg.paper.circle(100,50,40).attr({
+	    fill: "green"								
+	});
+	var b1 = c1.getBBox(), b2 = c2.getBBox();
+	var isInter = Snap.path.isBBoxIntersect(b1, b2);
+
+	console.log(isInter);    // true
+
+
+
+
+	/*
+	Snap.path.isPointInside(path, x, y)
+	实用方法。给定的点是否在闭合路径的内部。
+
+	注意：fill模式不影响这个方法的结果。
+
+	参数
+
+	path 字符串。路径字符串。
+	x 数值。点的x.
+	y 数值。点的y.
+	返回值
+
+	布尔值。如果点在路径中，则返回true.
+	 */
+
+	var path = "m32,118c0,0 21,-100 78,-94c57,6 -78,94 -78,94z";
+	var is50x50 = Snap.path.isPointInside(path, 50, 50),
+	    is80x80 = Snap.path.isPointInside(path, 80, 80);
+	console.log([is50x50, is80x80].join());   // false, true
+
+
+
+	/*
+	Snap.path.isPointInsideBBox(bbox, x, y)
+	实用方法。给定的点是否在盒子的内部。
+
+	参数
+
+	bbox 字符串。边界盒子。
+	x 数值。点的x坐标。
+	y 数值。点的y坐标。
+	返回值
+
+	布尔值。如果点在盒子中，则返回true.
+	 */
+	
+	/*
+	Snap.path.map(path, matrix)
+	把路径字符串按照矩阵转换。
+
+	参数
+
+	path 字符串。路径字符串。
+	matrix 对象。矩阵。
+	 */
+	var path = 'M10,10L90,90', matrix = new Snap.Matrix(1,0,0,1,10,10);
+	var pathTransform = Snap.path.map(path, matrix);
+	if (window.console) { 
+	    console.log(pathTransform);    // 结果是：[Array[3], Array[7], toString: function]
+	    console.log(pathTransform.toString());    // 结果是：M20,20C20,20,100,100,100,100
+	}
+
+
+
+
+	/*
+	Snap.path.toAbsolute(path)
+	转换路径坐标为绝对值。
+
+	参数
+
+	path 字符串。路径字符串。
+	 */
+	 var path = "M10,10L90,90";
+	var absolute = Snap.path.toAbsolute(path);
+	console.log(absolute);    // [Array[3], Array[3], toString: function]
+	console.log(absolute.toString());    // "M10,10L90,90"
+
+
+
+	/*
+	Snap.path.toCubic(pathString)
+	实用方法。转换一个路径为一个全部路径段采用三次贝塞尔曲线表示的新路径
+
+	参数
+
+	pathString 字符串或数组。路径字符串或段数组。
+	返回值
+
+	数组。路径段数组。
+	 */
+	var pathString = "m32,118c0,0 21,-100 78,-94c57,6 -78,94 -78,94z";
+	var cubic = Snap.path.toCubic(pathString);
+	console.log(cubic.toString());
+	// 结果是：
+	// M32,118C32,118,53,18,110,24C167,30,32,118,32,118C32,118,32,118,32,118
+
+
+
+	/*
+	Snap.path.toRelative(path)
+	转换路径坐标为相对值。（一些路径类型字母的大小写表示转换）
+
+	参数 path 字符串。路径字符串。
+	 */
+	var path = "M10,10L90,90";
+	var relative = Snap.path.toRelative(path);
+	console.log(relative);    // Array[2]
+	console.log(relative.toString());    "M10,10l80,80"
+
+
+	/*
+	Snap.plugin()
+		Snap.plugin(f)
+		插件方法。其函数参数可以使用下面4个参数。
+
+		Snap.plugin(function (Snap, Element, Paper, global) {
+		    Snap.newmethod = function () {};
+		    Element.prototype.newmethod = function () {};
+		    Paper.prototype.newmethod = function () {};
+		});
+
+	Snap.rad()
+		Snap.rad(deg)
+		转换角度为弧度。
+
+		参数
+
+		deg 数值。角度。
+		返回值
+
+		数值。弧度。
+
+		使用
+
+		Snap.rad(45);    // 0.7853981633974483
+
+	Snap.snapTo()
+		Snap.snapTo(values, value, [tolerance])
+		给定值为给定格栅。可以理解为
+
+		参数
+
+		values 数组或数值。给定的数组值，或者每步骤变化值。
+		value 数值。要调整的值。
+		tolerance 数值。触发snap的距离目标值的最大值。。
+		返回值
+
+		数值。调整后的值。
+
+
+	Snap.select()
+		Snap.select(query)
+		包裹指定的CSS选择器的一个DOM元素，使其可以使用文档中Element的方法。
+
+		参数 query 字符串。CSS选择器。
+
+
+	Snap.selectAll()
+		包裹指定的CSS选择器的DOM元素们，使其可以使用文档中Element的方法。
+	 */
+
+
+
+
+</script>
+</html>
